@@ -6,7 +6,7 @@
 
 // const client = new Client();
 // client
-//   .setEndpoint(process.env.APPWRITE_ENDPOINT) // Your API Endpoint
+//   .setEndpoint(process.env.APPWRITE_URL) // Your API Endpoint
 //   .setProject(process.env.APPWRITE_PROJECT_ID); // Your project ID
 
 // const account = new Account(client);
@@ -17,5 +17,5 @@
 const client = new Client();
 
 client
-    .setEndpoint(process.env.APPWRITE_ENDPOINT)
+    .setEndpoint(process.env.APPWRITE_URL)
     .setProject(process.env.APPWRITE_PROJECT_ID);
