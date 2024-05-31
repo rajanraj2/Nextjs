@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #ADD8E6 0%, #FFFFFF 100%);
+  }
+  
+  .signup-container {
+    width: 400px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: rgba(0,0,0,.1) -4px -4px blur(10px);
+  }
+  
+  .signup-container h1,
+  .signup-container h2 {
+    text-align: center;
+  }
+  
+  .signup-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .signup-container label {
+    margin-top: 10px;
+  }
+  
+  .signup-container input {
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .signup-container button[type="submit"] {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .or-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+  
+  .or-container::before,
+  .or-container::after {
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    background: #ddd;
+  }
+  
+  .social-signup {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .social-signup button {
+    flex-grow: 1;
+    margin-right: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .social-signup button:last-child {
+    margin-right: 0;
+  }
+  
+  .login-link {
+    text-align: center;
+    margin-top: 20px;
+  }
+  

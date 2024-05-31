@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #ADD8E6 0%, #FFFFFF 100%);
+  }
+  
+  .signin-container {
+    width: 400px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: rgba(0,0,0,.1) -4px -4px blur(10px);
+  }
+  
+  h2 {
+      font-size:24px; 
+      font-weight:bold; 
+      margin-bottom:5px; 
+  }
+  
+  label {
+      display:block; 
+      margin-top :10 px ;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+     width :100%;
+     padding :15 px ;
+     margin-top :5 px ;
+     margin-bottom :20 px ;
+     border-radius :5 px ;
+     border :1 px solid #ddd ;
+  }
+  
+  button[type="submit"] {
+     width :100%;
+     padding :15 px ;
+     margin-top :20 px ;
+     background-color :#007BFF ;
+     color :#fff ;
+     border :none ;
+     border-radius :5 px ;
+     cursor :pointer ;
+  }
+  
+  .or-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+  
+  .or-container::before,
+  .or-container::after {
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    background: #ddd;
+  }
+  
+  .social-signin {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .social-signin button {
+    flex-grow: 1;
+    margin-right: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .social-signin button:last-child {
+    margin-right: 0;
+  }
+  
+  .signup-link {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
