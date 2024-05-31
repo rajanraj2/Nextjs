@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import {
   Button,
   TextField,
   Typography,
-  Link,
   Box,
   Container,
   Grid,
@@ -140,7 +140,7 @@ function Signin() {
         </Grid>
         <Box className={classes.link}>
           <Typography variant="body2" color="textSecondary" align="center">
-            Don't have an Account? <Link href="/signup">SIGN UP</Link>
+            Don't have an Account? <Link to="/signup">SIGN UP</Link>
           </Typography>
         </Box>
       </Container>

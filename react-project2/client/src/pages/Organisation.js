@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { Button, Card, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -44,10 +45,10 @@ const Organisation = () => {
           Welcome Arya Soni!
         </Typography>
         <Button variant="contained" color="primary" className={classes.button}>
-          Self Hosting
+        <Link to="/landing"> Self Hosting </Link>
         </Button>
         <Button variant="outlined" color="primary" className={classes.button}>
-          XeroCode Hosting
+        <Link to="/landing"> XeroCode Hosting </Link>
         </Button>
       </Card>
     </div>
