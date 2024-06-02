@@ -1,6 +1,7 @@
 import express from 'express';
-import { Client, Account, Databases, OAuthProvider } from 'appwrite';
+import { Client, Account, Databases, OAuthProvider, ID } from 'appwrite';
 import { home } from '../controllers/home-controller.js';
+import bcrypt from 'bcrypt';
 
 const router = express.Router();
 
@@ -20,8 +21,12 @@ router.post('/signup', async (req, res) => {
     const { email, password, name } = req.body;
 
     try {
+
+        // // Hash the password
+        // const hashedPassword = await bcrypt.hash(password, 10);
+
         const response = await account.create('unique()', email, password, name);
-        
+
         // // Fetch user details
         // const user = await account.get();
         // console.log('User details:', user);
@@ -56,6 +61,20 @@ router.post('/signup', async (req, res) => {
 //     }
 //   });
 
+
+
+// // Hash the password
+// const hashedPassword = await bcrypt.hash(password, 10);
+
+// // Compare the hashed password
+// const isPasswordValid = await bcrypt.compare(password, user.hashedPassword);
+
+// if (!isPasswordValid) {
+//     return res.status(400).json({ error: 'Invalid password' });
+// }
+
+
+
 // Signin route
 router.post('/signin', async (req, res) => {
     const { email, password } = req.body;
@@ -65,9 +84,9 @@ router.post('/signin', async (req, res) => {
         const response = await account.createEmailPasswordSession(email, password);
         console.log('Signin successful:', response);
 
-        // // Fetch user details
-        // const user = await account.get();
-        // console.log('User details:', user);
+        // Fetch user details
+        const user = await account.get();
+        console.log('User details:', user);
 
         res.status(200).json(response);
     } catch (error) {

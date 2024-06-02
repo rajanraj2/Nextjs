@@ -111,7 +111,7 @@ function Signin() {
     }
   };
 
-  const HandleGoogelLogin = () => {
+  const HandleGoogleLogin = () => {
     window.location.href = `http://localhost:5000/api/auth/google`;
   };
 
@@ -171,7 +171,7 @@ function Signin() {
               fullWidth
               className={classes.button}
               startIcon={<img src={google} alt="Google login" />}
-              onClick={() => HandleGoogelLogin()}
+              onClick={() => HandleGoogleLogin()}
             >
               Login With Google
             </Button>

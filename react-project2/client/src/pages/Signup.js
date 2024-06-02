@@ -96,6 +96,15 @@ function Signup() {
     }
   }
 
+  const HandleGoogleLogin = () => {
+    window.location.href = `http://localhost:5000/api/auth/google`;
+  };
+
+  const HandleGithubLogin = () => {
+    window.location.href = `http://localhost:5000/api/auth/github`;
+  };
+
+
   return (
     <Container maxWidth="xs">
       <Box className={classes.container}>
@@ -185,6 +194,7 @@ function Signup() {
             fullWidth
             className={classes.button}
             startIcon={<img src={google} alt="Google login" />}
+            onClick={() => HandleGoogleLogin()}
           >
             Sign Up With Google
           </Button>
@@ -195,6 +205,7 @@ function Signup() {
             fullWidth
             className={classes.button}
             startIcon={<img src={github} alt="Github login" />}
+            onClick={() => HandleGithubLogin()}
           >
             Sign Up With Github
           </Button>
