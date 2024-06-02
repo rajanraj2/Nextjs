@@ -21,6 +21,11 @@ router.post('/signup', async (req, res) => {
 
     try {
         const response = await account.create('unique()', email, password, name);
+        
+        // // Fetch user details
+        // const user = await account.get();
+        // console.log('User details:', user);
+
         res.status(201).json(response);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -59,6 +64,10 @@ router.post('/signin', async (req, res) => {
     try {
         const response = await account.createEmailPasswordSession(email, password);
         console.log('Signin successful:', response);
+
+        // // Fetch user details
+        // const user = await account.get();
+        // console.log('User details:', user);
 
         res.status(200).json(response);
     } catch (error) {
