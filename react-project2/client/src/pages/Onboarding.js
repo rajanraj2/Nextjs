@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   Box,
@@ -8,6 +9,8 @@ import {
   Grid,
   makeStyles
 } from '@material-ui/core';
+
+import { UserContext } from './UserContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,11 +60,16 @@ const useStyles = makeStyles((theme) => ({
 
 const Onboarding = () => {
   const classes = useStyles();
+
+  const navigate = useNavigate();
+  const { user, logout } = useContext(UserContext); // Get the user from context
   const [orgName, setOrgName] = useState('');
 
   const handleLogout = () => {
-    // Handle logout logic
+    logout();
     console.log('Logged out');
+    navigate('/');
+
   };
 
   const handleSubmit = (event) => {
@@ -77,7 +85,7 @@ const Onboarding = () => {
       </Button>
       <Container maxWidth="sm" className={classes.container}>
         <Typography variant="h4" gutterBottom>
-          Welcome Arya Soni !
+          Welcome {user ? user.name : 'Guest'}!
         </Typography>
         <Box className={classes.buttonGroup}>
           <Button variant="outlined" className={classes.button}>

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import {
   Button,
   TextField,
@@ -9,6 +9,8 @@ import {
   Grid,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+
+import { UserContext } from './UserContext';
 
 import google from '../assets/google.png';
 import github from '../assets/github.png';
@@ -62,13 +64,46 @@ const useStyles = makeStyles((theme) => ({
 
 function Signin() {
   const classes = useStyles();
+
+  const { setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Add your form submission logic here
-    console.log('Form submitted!');
+
+    const user = {
+      email,
+      password
+    };
+
+    try {
+      const response = await fetch('http://localhost:5000/api/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log('Signin successful', result);
+
+        // Update the user context
+        setUser(result.user);
+
+        // Redirect to the onboarding page
+        navigate('/onboarding');
+      } else {
+        const error = await response.json();
+        console.error('Signin failed', error);
+      }
+    } catch (error) {
+      console.error('An error occurred during signin', error);
+    }
   };
 
   return (

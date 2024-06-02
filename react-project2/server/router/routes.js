@@ -27,13 +27,37 @@ router.post('/signup', async (req, res) => {
     }
 });
 
+// Login route
+// router.post('/signin', async (req, res) => {
+//     const { email, password } = req.body;
+//     const account = new Account(client);
+  
+//     try {
+//       // Create the session using the Appwrite client
+//       const session = await account.createEmailPasswordSession(email, password);
+  
+//       // Set the session cookie
+//       res.cookie('session', session.$id, { // use the session ID as the cookie value
+//         httpOnly: true,
+//         secure: true,
+//         sameSite: 'strict',
+//         maxAge: session.expire - Math.floor(Date.now() / 1000), // Set maxAge based on session expiration
+//         path: '/',
+//       });
+  
+//       res.status(200).json({ success: true });
+//     } catch (e) {
+//       res.status(400).json({ success: false, error: e.message });
+//     }
+//   });
+
 // Signin route
 router.post('/signin', async (req, res) => {
     const { email, password } = req.body;
     console.log('Signin request:', { email, password });
 
     try {
-        const response = await account.createSession(email, password);
+        const response = await account.createEmailPasswordSession(email, password);
         console.log('Signin successful:', response);
         res.status(200).json(response);
     } catch (error) {

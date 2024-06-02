@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
-import {  
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+import {
   Button,
   TextField,
   Typography,
@@ -9,6 +9,8 @@ import {
   Grid,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+
+import { UserContext } from './UserContext';
 
 import google from '../assets/google.png';
 import github from '../assets/github.png';
@@ -48,14 +50,50 @@ const useStyles = makeStyles((theme) => ({
 
 function Signup() {
   const classes = useStyles();
+
+  const navigate = useNavigate();
+  const { setUser } = useContext(UserContext); // Get setUser from UserContext
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Add your form submission logic here
-    console.log('Form submitted!');
-  };
+
+    const fullName = `${firstName} ${lastName}`;
+
+    const user = {
+      email,
+      password,
+      name: fullName
+    };
+
+    try {
+      const response = await fetch('http://localhost:5000/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log('Signup successful', result);
+        // Optionally, redirect the user to another page or show a success message
+        setUser(user); // Set user information in context
+        navigate("/onboarding");
+
+      } else {
+        const error = await response.json();
+        console.error('Signup failed', error);
+      }
+    } catch (error) {
+      console.error('An error occurred during signup', error);
+    }
+  }
 
   return (
     <Container maxWidth="xs">
@@ -74,6 +112,8 @@ function Signup() {
           name="firstName"
           autoComplete="fname"
           autoFocus
+          value={firstName}
+          onChange={(event) => setFirstName(event.target.value)}
         />
         <TextField
           variant="outlined"
@@ -84,6 +124,8 @@ function Signup() {
           label="Last Name"
           name="lastName"
           autoComplete="lname"
+          value={lastName}
+          onChange={(event) => setLastName(event.target.value)}
         />
         <TextField
           variant="outlined"
