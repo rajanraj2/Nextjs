@@ -92,8 +92,13 @@ function Signin() {
         const result = await response.json();
         console.log('Signin successful', result);
 
+        // Extract user information
+        const userId = result.userId;
+        console.log('User ID:', userId);
+
         // Update the user context
         setUser(result.user);
+        console.log('User context updated', result.user)
 
         // Redirect to the onboarding page
         navigate('/onboarding');
@@ -104,6 +109,14 @@ function Signin() {
     } catch (error) {
       console.error('An error occurred during signin', error);
     }
+  };
+
+  const HandleGoogelLogin = () => {
+    window.location.href = `http://localhost:5000/api/auth/google`;
+  };
+
+  const HandleGithubLogin = () => {
+    window.location.href = `http://localhost:5000/api/auth/github`;
   };
 
   return (
@@ -158,6 +171,7 @@ function Signin() {
               fullWidth
               className={classes.button}
               startIcon={<img src={google} alt="Google login" />}
+              onClick={() => HandleGoogelLogin()}
             >
               Login With Google
             </Button>
@@ -168,6 +182,7 @@ function Signin() {
               fullWidth
               className={classes.button}
               startIcon={<img src={github} alt="Github login" />}
+              onClick={() => HandleGithubLogin()}
             >
               Login With Github
             </Button>

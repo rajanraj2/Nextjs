@@ -83,6 +83,7 @@ function Signup() {
         const result = await response.json();
         console.log('Signup successful', result);
         // Optionally, redirect the user to another page or show a success message
+        console.log("user information : ", user);
         setUser(user); // Set user information in context
         navigate("/onboarding");
 
