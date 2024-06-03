@@ -121,6 +121,7 @@ function Signin() {
 
   return (
     <Box position="relative" minHeight="100vh" bgcolor="#f0f2f5">
+      <Container maxWidth="md" className={classes.container}>
       <Container maxWidth="xs" className={classes.container}>
         <Typography variant="h5">Welcome Arya Soni!</Typography>
         <Typography variant="body1" color="textSecondary">
@@ -193,6 +194,8 @@ function Signin() {
             Don't have an Account? <Link to="/signup">SIGN UP</Link>
           </Typography>
         </Box>
+      </Container>
+        <Container maxWidth="md" className={classes.container}></Container>
       </Container>
       <Box className={classes.wave} />
     </Box>

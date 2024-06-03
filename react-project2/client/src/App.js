@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { UserProvider } from './pages/UserContext.js'
 import Home from './pages/Home.js'
@@ -11,6 +11,9 @@ import Landing from './pages/Landing.js'
 
 
 function App() {
+  useEffect(() => {
+    document.title = 'XeroCodee Demo App';
+  }, []);
 
   return (
     <>

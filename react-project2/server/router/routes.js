@@ -84,9 +84,9 @@ router.post('/signin', async (req, res) => {
         const response = await account.createEmailPasswordSession(email, password);
         console.log('Signin successful:', response);
 
-        // Fetch user details
-        const user = await account.get();
-        console.log('User details:', user);
+        // // Fetch user details
+        // const user = await account.get();
+        // console.log('User details:', user);
 
         res.status(200).json(response);
     } catch (error) {
