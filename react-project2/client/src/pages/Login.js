@@ -24,7 +24,9 @@ const useStyles = makeStyles((theme) => ({
     height: '80vh',
     backgroundColor: '#fff',
     border: '3px solid silver',
-    borderRadius: theme.spacing(1),
+    borderTopRightRadius: '30px',
+    borderBottomLeftRadius: '30px',
+    // borderRadius: theme.spacing(1),
     padding: theme.spacing(2),
     position: 'relative',
   },
@@ -33,9 +35,12 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     background: '#fff',
-    padding: theme.spacing(3),
+    padding: theme.spacing(5),
+    // margin: theme.spacing(2),
+    marginBottom: theme.spacing(3),
+    // border: '3px solid silver',
     borderRadius: theme.spacing(1),
-    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+    // boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
     width: '45%',
     zIndex: 1, // Added this line to ensure it appears above the wave
   },
@@ -57,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     height: '1px',
     backgroundColor: theme.palette.text.secondary,
+    color: 'black'
   },
   button: {
     display: 'flex',
@@ -64,16 +70,18 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     width: '100%',
     margin: theme.spacing(1, '1%'),
+    whiteSpace: 'nowrap',
+    textTransform: 'none',
   },
   link: {
     marginTop: theme.spacing(2),
   },
   wave: {
-    position: 'absolute',
+    // position: 'absolute',
     bottom: 0,
     right: 0,
     width: '100%',
-    height: '200px',
+    height: '100px',
     background: `url(${wave}) no-repeat`,
     backgroundSize: 'cover',
     zIndex: 0, // Added this line to ensure it appears behind the container
@@ -84,6 +92,15 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  buttonTextSmall: {
+    fontSize: '0.8rem', // Adjust the font size as needed
+    color: 'textSecondary',
+  },
+  welcomeText: {
+    fontWeight: 'bold',
+    textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+    fontSize: '2rem', // Adjust the font size as needed
   },
 }));
 
@@ -147,11 +164,14 @@ function Signin() {
   return (
     <Box className={classes.mainBackground}>
       <Container maxWidth="md" className={classes.outerContainer}>
-        <Box className={classes.container}>
-          <Typography variant="h5">Welcome Arya Soni!</Typography>
+        {/* <Box className={classes.container}> */}
+          <Box className={classes.container}>
+          <Typography variant="h5" className={classes.welcomeText}>Welcome!</Typography>
+          <Box className={classes.dividerLine} />
           <Typography variant="body1" color="textSecondary">
             Login To Your Account
           </Typography>
+          <Box className={classes.dividerLine} />
           <form onSubmit={handleSubmit} className={classes.form}>
             <TextField
               variant="outlined"
@@ -195,8 +215,11 @@ function Signin() {
               <Button
                 variant="outlined"
                 fullWidth
-                className={classes.button}
-                startIcon={<img src={google} alt="Google login" />}
+                className={`${classes.button} ${classes.buttonTextSmall}`}
+                endIcon={<img src={google} alt="Google login" />}
+                // icon appears in last instead of startIcon
+                
+
                 onClick={() => HandleGoogleLogin()}
               >
                 Login With Google
@@ -206,8 +229,8 @@ function Signin() {
               <Button
                 variant="outlined"
                 fullWidth
-                className={classes.button}
-                startIcon={<img src={github} alt="Github login" />}
+                className={`${classes.button} ${classes.buttonTextSmall}`}
+                endIcon={<img src={github} alt="Github login" />}
                 onClick={() => HandleGithubLogin()}
               >
                 Login With Github
@@ -219,9 +242,12 @@ function Signin() {
               Don't have an Account? <Link to="/signup">SIGN UP</Link>
             </Typography>
           </Box>
+          </Box>
+        {/* </Box> */}
+        <Box className={classes.container}>
+          <Box className={classes.wave} />
         </Box>
-        <Box className={classes.container} />
-        <Box className={classes.wave} />
+        {/* <Box className={classes.container} /> */}
       </Container>
       {/* <Box className={classes.wave} /> */}
     </Box>
