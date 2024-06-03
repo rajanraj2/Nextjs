@@ -14,17 +14,30 @@ import { UserContext } from './UserContext';
 
 import google from '../assets/google.png';
 import github from '../assets/github.png';
+import wave from '../assets/wave.svg';
 
 const useStyles = makeStyles((theme) => ({
+  outerContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '80vh',
+    backgroundColor: '#fff',
+    border: '3px solid silver',
+    borderRadius: theme.spacing(1),
+    padding: theme.spacing(2),
+    position: 'relative',
+  },
   container: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginTop: theme.spacing(8),
     background: '#fff',
     padding: theme.spacing(3),
     borderRadius: theme.spacing(1),
     boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+    width: '45%',
+    zIndex: 1, // Added this line to ensure it appears above the wave
   },
   form: {
     width: '100%',
@@ -32,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    backgroundColor: '#007bff',
+    backgroundColor: '#1F64FF',
     color: '#fff',
   },
   divider: {
@@ -46,7 +59,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.text.secondary,
   },
   button: {
-    margin: theme.spacing(1, 0),
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    margin: theme.spacing(1, '1%'),
   },
   link: {
     marginTop: theme.spacing(2),
@@ -54,11 +71,19 @@ const useStyles = makeStyles((theme) => ({
   wave: {
     position: 'absolute',
     bottom: 0,
-    left: 0,
+    right: 0,
     width: '100%',
-    height: '150px',
-    background: 'url(wave.svg) no-repeat',
+    height: '200px',
+    background: `url(${wave}) no-repeat`,
     backgroundSize: 'cover',
+    zIndex: 0, // Added this line to ensure it appears behind the container
+  },
+  mainBackground: {
+    minHeight: '100vh',
+    background: 'linear-gradient(to bottom, #DAE9FF, #ffffff)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 }));
 
@@ -120,84 +145,85 @@ function Signin() {
   };
 
   return (
-    <Box position="relative" minHeight="100vh" bgcolor="#f0f2f5">
-      <Container maxWidth="md" className={classes.container}>
-      <Container maxWidth="xs" className={classes.container}>
-        <Typography variant="h5">Welcome Arya Soni!</Typography>
-        <Typography variant="body1" color="textSecondary">
-          Login To Your Account
-        </Typography>
-        <form onSubmit={handleSubmit} className={classes.form}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email-Id"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-          <Button type="submit" fullWidth variant="contained" className={classes.submit}>
-            LOGIN
-          </Button>
-        </form>
-        <Box className={classes.divider}>
-          <Box className={classes.dividerLine} />
-          <Typography variant="body2" color="textSecondary" align="center" mx={2}>
-            OR
+    <Box className={classes.mainBackground}>
+      <Container maxWidth="md" className={classes.outerContainer}>
+        <Box className={classes.container}>
+          <Typography variant="h5">Welcome Arya Soni!</Typography>
+          <Typography variant="body1" color="textSecondary">
+            Login To Your Account
           </Typography>
-          <Box className={classes.dividerLine} />
-        </Box>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Button
+          <form onSubmit={handleSubmit} className={classes.form}>
+            <TextField
               variant="outlined"
+              margin="normal"
+              required
               fullWidth
-              className={classes.button}
-              startIcon={<img src={google} alt="Google login" />}
-              onClick={() => HandleGoogleLogin()}
-            >
-              Login With Google
-            </Button>
-          </Grid>
-          <Grid item xs={12}>
-            <Button
+              id="email"
+              label="Email-Id"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+            <TextField
               variant="outlined"
+              margin="normal"
+              required
               fullWidth
-              className={classes.button}
-              startIcon={<img src={github} alt="Github login" />}
-              onClick={() => HandleGithubLogin()}
-            >
-              Login With Github
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+            <Button type="submit" fullWidth variant="contained" className={classes.submit}>
+              LOGIN
             </Button>
+          </form>
+          <Box className={classes.divider}>
+            <Box className={classes.dividerLine} />
+            <Typography variant="body2" color="textSecondary" align="center" mx={2}>
+              OR
+            </Typography>
+            <Box className={classes.dividerLine} />
+          </Box>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <Button
+                variant="outlined"
+                fullWidth
+                className={classes.button}
+                startIcon={<img src={google} alt="Google login" />}
+                onClick={() => HandleGoogleLogin()}
+              >
+                Login With Google
+              </Button>
+            </Grid>
+            <Grid item xs={6}>
+              <Button
+                variant="outlined"
+                fullWidth
+                className={classes.button}
+                startIcon={<img src={github} alt="Github login" />}
+                onClick={() => HandleGithubLogin()}
+              >
+                Login With Github
+              </Button>
+            </Grid>
           </Grid>
-        </Grid>
-        <Box className={classes.link}>
-          <Typography variant="body2" color="textSecondary" align="center">
-            Don't have an Account? <Link to="/signup">SIGN UP</Link>
-          </Typography>
+          <Box className={classes.link}>
+            <Typography variant="body2" color="textSecondary" align="center">
+              Don't have an Account? <Link to="/signup">SIGN UP</Link>
+            </Typography>
+          </Box>
         </Box>
+        <Box className={classes.container} />
+        <Box className={classes.wave} />
       </Container>
-        <Container maxWidth="md" className={classes.container}></Container>
-      </Container>
-      <Box className={classes.wave} />
+      {/* <Box className={classes.wave} /> */}
     </Box>
   );
 }
