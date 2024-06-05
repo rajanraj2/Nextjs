@@ -6,6 +6,7 @@ import {
   Typography,
   Button,
   TextField,
+  Grid,
   makeStyles
 } from '@material-ui/core';
 
@@ -13,11 +14,11 @@ import { UserContext } from './UserContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    background: 'linear-gradient(to bottom, #DAE9FF, #ffffff)',
     minHeight: '100vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#f0f2f5',
     position: 'relative',
   },
   container: {
@@ -36,13 +37,6 @@ const useStyles = makeStyles((theme) => ({
     width: '30%',
     height: '60px',
     fontSize: '16px',
-  },
-  selectedButton: {
-    backgroundColor: '#007bff',
-    color: '#fff',
-    '&:hover': {
-      backgroundColor: '#0056b3',
-    },
   },
   orgNameContainer: {
     display: 'flex',
@@ -70,29 +64,18 @@ const Onboarding = () => {
   const navigate = useNavigate();
   const { user, logout } = useContext(UserContext); // Get the user from context
   const [orgName, setOrgName] = useState('');
-  const [selectedRole, setSelectedRole] = useState('Developer'); // Default to Developer
 
   const handleLogout = () => {
     logout();
     console.log('Logged out');
     navigate('/');
+
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle submit logic
     console.log('Organization Name:', orgName);
-    console.log('Selected Role:', selectedRole);
-    // Redirect based on the selected role
-    if (selectedRole === 'Company') {
-      navigate('/company');
-    } else {
-      navigate('/organisation');
-    }
-  };
-
-  const handleRoleSelect = (role) => {
-    setSelectedRole(role);
   };
 
   return (
@@ -105,28 +88,13 @@ const Onboarding = () => {
           Welcome {user ? user.name : 'Guest'}!
         </Typography>
         <Box className={classes.buttonGroup}>
-          <Button
-            variant={selectedRole === 'Developer' ? "contained" : "outlined"}
-            color={selectedRole === 'Developer' ? "primary" : "default"}
-            className={`${classes.button} ${selectedRole === 'Developer' ? classes.selectedButton : ''}`}
-            onClick={() => handleRoleSelect('Developer')}
-          >
+          <Button variant="outlined" className={classes.button}>
             Developer
           </Button>
-          <Button
-            variant={selectedRole === 'Organisation' ? "contained" : "outlined"}
-            color={selectedRole === 'Organisation' ? "primary" : "default"}
-            className={`${classes.button} ${selectedRole === 'Organisation' ? classes.selectedButton : ''}`}
-            onClick={() => handleRoleSelect('Organisation')}
-          >
+          <Button variant="contained" color="primary" className={classes.button}>
             Organisation
           </Button>
-          <Button
-            variant={selectedRole === 'Company' ? "contained" : "outlined"}
-            color={selectedRole === 'Company' ? "primary" : "default"}
-            className={`${classes.button} ${selectedRole === 'Company' ? classes.selectedButton : ''}`}
-            onClick={() => handleRoleSelect('Company')}
-          >
+          <Button variant="outlined" className={classes.button}>
             Company
           </Button>
         </Box>

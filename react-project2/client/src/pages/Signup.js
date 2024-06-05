@@ -71,6 +71,9 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     marginBottom: theme.spacing(1),
+    fontWeight: 'bold',
+    textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+    fontSize: '2rem',
   },
   mainBackground: {
     minHeight: '100vh',
