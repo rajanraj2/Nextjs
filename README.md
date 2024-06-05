@@ -6,7 +6,11 @@ This project is a web application designed to provide a user-friendly interface 
 
 ## Demo
 
-![Demo GIF](path/to/demo.gif)
+Demo video link - https://drive.google.com/file/d/1ur9_dRdQeFcTEZLWGWgM1EczEIqmeYW0/view?usp=sharing
+<video width="600" controls>
+  <source src="DemoXeroCodee.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## Features
 
@@ -119,7 +123,7 @@ Ensure that the backend API is running and accessible at `http://localhost:5000`
 - User login (`POST /api/signin`)
 - OAuth authentication (`GET /api/auth/google`, `GET /api/auth/github`)
 
-### Environment Variables
+### Environment Variables (Optional for now)
 
 The application uses environment variables to configure the API URL. Ensure that the `.env` file contains the correct URL for the backend API.
 

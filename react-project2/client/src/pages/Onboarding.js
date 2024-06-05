@@ -102,7 +102,7 @@ const Onboarding = () => {
       </Button>
       <Container maxWidth="sm" className={classes.container}>
         <Typography variant="h4" gutterBottom>
-          Welcome {user ? user.name : 'Guest'}!
+          Welcome {user ? user.name : 'Rajan Raj'}!
         </Typography>
         <Box className={classes.buttonGroup}>
           <Button
