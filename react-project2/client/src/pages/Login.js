@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '80vh',
+    height: '90vh',
     backgroundColor: '#fff',
     border: '3px solid silver',
     borderTopRightRadius: '30px',
@@ -34,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    background: '#fff',
     padding: theme.spacing(5),
     // margin: theme.spacing(2),
     marginBottom: theme.spacing(3),
@@ -162,6 +161,7 @@ function Signin() {
   };
 
   return (
+    <>
     <Box className={classes.mainBackground}>
       <Container maxWidth="md" className={classes.outerContainer}>
         {/* <Box className={classes.container}> */}
@@ -245,12 +245,11 @@ function Signin() {
           </Box>
         {/* </Box> */}
         <Box className={classes.container}>
-          <Box className={classes.wave} />
+          {/* <Box className={classes.wave} /> */}
         </Box>
-        {/* <Box className={classes.container} /> */}
       </Container>
-      {/* <Box className={classes.wave} /> */}
     </Box>
+    </>
   );
 }
 

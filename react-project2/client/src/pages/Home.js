@@ -4,11 +4,11 @@ import { Container, Box, Typography, Button, makeStyles } from '@material-ui/cor
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    background: 'linear-gradient(to bottom, #DAE9FF, #ffffff)',
     minHeight: '100vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f0f2f5',
   },
   container: {
     backgroundColor: '#fff',
