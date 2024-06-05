@@ -4,12 +4,16 @@
 
 This project is a web application designed to provide a user-friendly interface for users to sign up and sign in. The application supports authentication through email/password as well as OAuth providers like Google and GitHub. The project uses React for the frontend and integrates with a backend API for user authentication and data management using appwrite.
 
+## Deployment Link - https://demo-xero-codee.vercel.app/
+
+Note : All backend functionalities are not available in the deployed version of this project
+
 ## Demo
 
 Demo video link - https://drive.google.com/file/d/1ur9_dRdQeFcTEZLWGWgM1EczEIqmeYW0/view?usp=sharing
 <video width="600" controls>
   <source src="DemoXeroCodee.mp4" type="video/mp4">
-  Your browser does not support the video tag.
+  The browser does not support the video tag.
 </video>
 
 ## Features
@@ -130,10 +134,6 @@ The application uses environment variables to configure the API URL. Ensure that
 ```env
 REACT_APP_API_URL=http://localhost:5000/api
 ````
-
-## Contributing
-
-Contributions are welcome! Please fork the repository and submit a pull request for any improvements or bug fixes.
 
 ## Contact
 
