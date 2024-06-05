@@ -16,6 +16,8 @@ Demo video link - https://drive.google.com/file/d/1ur9_dRdQeFcTEZLWGWgM1EczEIqme
   The browser does not support the video tag.
 </video>
 
+
+![sign up screenshot](signup.png)
 ## Features
 
 - User Authentication (Sign up and Sign in)
